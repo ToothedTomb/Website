@@ -1,0 +1,221 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>ToDoList!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for ToDoList!</u></h1>
+<p>
+# import all functions from the tkinter  <br>  
+from tkinter import * <br>
+  
+# import messagebox class from tkinter <br> 
+from tkinter import messagebox  <br>
+  
+# global list is declare for storing all the task <br> 
+tasks_list = []  <br>
+  
+# global variable is declare for couting the task <br> 
+counter = 1 <br>
+  
+# Function for checking input error when <br> 
+# empty input is given in task field <br>
+
+def inputError() : <br> 
+      
+    # check for enter task field is empty or not <br> 
+    if enterTaskField.get() == "Please enter your task!" : <br> 
+          
+        # show the error message <br> 
+        messagebox.showerror("Error code 1: Input!", "Input error!")  <br>
+          
+        return 0 <br>
+       
+    return 1 <br>
+  
+# Function for clearing the contents <br> 
+# of task number text field  <br>
+def clear_taskNumberField() :  <br>
+      
+    # clear the content of task number text field <br> 
+    taskNumberField.delete(0.0, END)  <br>
+  
+# Function for clearing the contents <br> 
+# of task entry field     <br>
+def clear_taskField() : <br>
+  
+    # clear the content of task field entry box <br> 
+    enterTaskField.delete(0, END)  <br>
+      
+# Function for inserting the contents <br> 
+# from the task entry field to the text area  <br>
+def insertTask(): <br>
+  
+    global counter <br> 
+      
+    # check for error <br> 
+    value = inputError()  <br>
+  
+    # if error occur then return <br> 
+    if value == 0 :  <br>
+        return <br>
+  
+    # get the task string concatenating <br> 
+    # with new line character  <br>
+    content = enterTaskField.get() + "\n" <br>
+  
+    # store task in the list <br> 
+    tasks_list.append(content)  <br>
+  
+    # insert content of task entry field to the text area <br> 
+    # add task one by one in below one by one  <br>
+    TextArea.insert('end -1 chars', "[ " + str(counter) + " ] " + content) <br> 
+  
+    # incremented  <br>
+    counter += 1 <br>
+  
+    # function calling for deleting the content of task field <br> 
+    clear_taskField()  <br>
+  
+# function for deleting the specified task <br>
+def delete() :  <br>
+      
+    global counter  <br>
+      
+    # handling the empty task error <br> 
+    if len(tasks_list) == 0 :  <br>
+        messagebox.showerror("Error code 2: No task been found!", "Theres no task found!") <br> 
+        return <br>
+  
+    # get the task number, which is required to delete <br> 
+    number = taskNumberField.get(1.0, END)  <br>
+  
+    # checking for input error when <br> 
+    # empty input in task number field  <br>
+    if number == "\n" : <br>
+        messagebox.showerror("Error code 1: No input!", "Input error!") <br> 
+        return <br>
+      
+    else : <br>
+        task_no = int(number) <br>
+  
+    # function calling for deleting the <br> 
+    # content of task number field <br>
+    clear_taskNumberField() <br>
+      
+    # deleted specified task from the list <br> 
+    tasks_list.pop(task_no - 1)  <br>
+  
+    # decremented <br> 
+    counter -= 1 <br>
+      
+    # whole content of text area widget is deleted <br>
+    TextArea.delete(1.0, END)  <br>
+  
+    # rewriting the task after deleting one task at a time <br>
+    for i in range(len(tasks_list)) : <br>
+        TextArea.insert('end -1 chars', "[ " + str(i + 1) + " ] " + tasks_list[i]) <br> 
+      
+  
+# Driver code <br> 
+if __name__ == "__main__" : <br> 
+  
+    # create a GUI window <br> 
+    gui = Tk()  <br>
+  
+    # set the background colour of GUI window <br> 
+    gui.configure(background = "pink") <br>
+  
+    # set the title of GUI window <br> 
+    gui.title("ToDoListByJonathan Steadman!!!") <br>
+  
+    # set the configuration of GUI window <br>
+    gui.geometry("260x320") <br>
+    #Set the resizeable off <br>
+    gui.resizable(0,0) <br>
+    #Warning message <br>
+    messagebox.showinfo("Warning!", "This software will no longer will get any updates!!!") <br>
+    # create a label : Enter Your Task  <br>
+    enterTask = Label(gui, text = "Enter Your Task:") <br> 
+  
+    # create a text entry box <br>  
+    # for typing the task  <br>
+    enterTaskField = Entry(gui) <br>
+  
+    # create a Submit Button and place into the root window  <br>
+    # when user press the button, the command or   <br>
+    # function affiliated to that button is executed   <br>
+    Submit = Button(gui, text = "Submit", fg = "Black", bg = "green", command = insertTask) <br> 
+  
+    # create a text area for the root  <br>
+    # with lunida 13 font  <br>
+    # text area is for writing the content <br>
+    TextArea = Text(gui, height = 5, width = 25, font = "Roboto") <br>
+  
+    # create a label : Delete Task Number <br> 
+    taskNumber = Label(gui, text = "Delete Task Number", bg = "green") <br> 
+                         
+    taskNumberField = Text(gui, height = 1, width = 2, font = "lucida 13") <br>
+  
+    # create a Delete Button and place into the root window<br> 
+    # when user press the button, the command or<br>  
+    # function affiliated to that button is executed<br> . 
+    delete = Button(gui, text = "Delete", bg = "green", command = delete)<br> 
+  
+    # create a Exit Button and place into the root window<br> 
+    # when user press the button, the command or<br>  
+    # function affiliated to that button is executed<br> . 
+    Exit = Button(gui, text = "Exit", bg = "Red", command = exit)<br> 
+  
+    # grid method is used for placing <br> 
+    # the widgets at respective positions  <br>
+    # in table like structure. <br>
+    enterTask.grid(row = 0, column = 2) <br>
+  
+    # ipadx attributed set the entry box horizontal size    <br>            
+    enterTaskField.grid(row = 1, column = 2, ipadx = 50) <br>
+                         
+    Submit.grid(row = 2, column = 2) <br>
+          
+    # padx attributed provide x-axis margin  <br>
+    # from the root window to the widget. <br>
+    TextArea.grid(row = 3, column = 2, padx = 10, sticky = W) <br>
+                         
+    taskNumber.grid(row = 4, column = 2, pady = 5) <br>
+                         
+    taskNumberField.grid(row = 5, column = 2) <br>
+  
+    # pady attributed provide y-axis <br>
+    # margin from the widget.     <br>              
+    delete.grid(row = 6, column = 2, pady = 5) <br>
+                         
+    Exit.grid(row = 7, column = 2) <br>
+  
+    # start the GUI  <br>
+    gui.mainloop() <br>
+</p>
+</body>
+</html>

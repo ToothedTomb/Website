@@ -1,0 +1,71 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4p26EaBH5-SJr_IZitbS-fbA3DPfG3EETlHS3LFQfSism8OMKEGhhJbLauQc0wJvYwa5c0pIZe7bgsHJX6DD55WWjm-LPsvYAW3vboHWIHb7X5JYfJ-FSRKltKdWOqmw1pxAMO53chfHsaQ9h5ieUOSSxXw4gJACjJ5rJslkx44SqVouEur1PQCys7sMA-UxIuT-N9F9Gpo1ePRfCQMoOnSCHhm4c9mM_F2HZbt_0LiDE/54354.jpg?psid=1&width=640&height=480">
+<title>FeetToMeters!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for FeetToMeters!</u></h1>
+<p>from tkinter import * <br>
+from tkinter import ttk <br>
+
+def calculate(*args): <br>
+    try: <br>
+        value = float(feet.get()) <br>
+        meters.set((0.3048 * value * 10000.0 + 0.5)/10000.0) <br>
+    except ValueError: <br>
+        pass <br>
+
+root = Tk() <br>
+root.title("FeetToMetres by Jonathan Steadman!!!") <br>
+
+mainframe = ttk.Frame(root, padding="3 3 12 12") <br>
+mainframe.grid(column=0, row=0, sticky=(N, W, E, S)) <br>
+root.columnconfigure(0, weight=1) <br>
+root.rowconfigure(0, weight=1) <br>
+
+feet = StringVar() <br>
+meters = StringVar() <br>
+
+feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet) <br>
+feet_entry.grid(column=4, row=2, sticky=(W, E)) <br>
+ttk.Label(mainframe, text= "FeetToMetres by Jonathan Steadman").grid(column=2, row=1, sticky=E) <br>
+ttk.Label(mainframe, textvariable=meters).grid(column=4, row=3, sticky=(W, E)) <br>
+ttk.Button(mainframe, text="Calulate your metres", command=calculate).grid(column=3, row=3, sticky=W) <br>
+
+ttk.Label(mainframe, text="What is your feet").grid(column=1, row=2, sticky=W) <br>
+ttk.Label(mainframe, text="Your metres is equivalent to").grid(column=1, row=3, sticky=E) <br>
+ttk.Label(mainframe, text="meters").grid(column=5, row=3, sticky=W) <br>
+ttk.Label(mainframe, text= "Thanks for using my software :)").grid(column=2, row=5, sticky=E) <br>
+
+for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5) <br>
+
+feet_entry.focus() <br>
+root.bind('<Return>', calculate) <br>
+
+root.mainloop()</br> 
+</p>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Snake Game Cone for Linux!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Snake Game Clone For Linux source code!</u></h1>
+<p>from tkinter import * <br>
+import random <br>
+from typing import List <br>
+
+
+class Apple: <br>
+
+    def __init__(self): <br>
+        self.__x = random.randint(1, App.BOARD_WIDTH - 2) <br>
+        self.__y = random.randint(1, App.BOARD_HEIGHT - 2) <br>
+
+    def create_new_apple(self) -> None: <br>
+        self.__x = random.randint(1, App.BOARD_WIDTH - 2) <br>
+        self.__y = random.randint(1, App.BOARD_HEIGHT - 2) <br>
+
+    @property <br>
+    def x(self) -> int: <br>
+        return self.__x <br>
+
+    @property <br>
+    def y(self) -> int: <br>
+        return self.__y <br>
+         
+
+class Snake: <br>
+
+    KEYS = ["w", "s", "a", "d"] <br>
+    MAP_KEY_OPP = {"w": "s", "a": "d", "s": "w", "d": "a"} <br>
+ 
+    def __init__(self, apple): <br>
+        self.__apple = apple <br>
+        self.__x = [20, 20, 20] <br>
+        self.__y = [20, 21, 22] <br>
+        self.__length = 3 <br>
+        self.__key_current = "w" <br>
+        self.__key_last = self.__key_current <br>
+        self.__points = 0 <br>
+
+    def move(self) -> None:  # move and change direction with wasd <br>
+
+        self.__key_last = self.__key_current <br>
+
+        for i in range(self.length - 1, 0, -1): <br>
+            self.__x[i] = self.__x[i - 1] <br>
+            self.__y[i] = self.__y[i - 1] <br>
+
+        if self.__key_current == "w": <br>
+            self.__y[0] = self.__y[0] - 1 <br>
+
+        elif self.__key_current == "s": <br>
+            self.__y[0] = self.__y[0] + 1 <br>
+
+        elif self.__key_current == "a":<br>
+            self.__x[0] = self.__x[0] - 1<br>
+
+        elif self.__key_current == "d":<br>
+            self.__x[0] = self.__x[0] + 1<br>
+
+        self.eat_apple()<br>
+
+    def eat_apple(self) -> None:<br>
+
+        if self.__x[0] == self.__apple.x and self.__y[0] == self.__apple.y:<br>
+
+            self.__length = self.__length + 1<br>
+
+            x = self.__x[len(self.__x) - 1]  # snake grows<br>
+            y = self.__y[len(self.__y) - 1]<br>
+            self.__x.append(x + 1)<br>
+            self.__y.append(y)<br>
+
+            self.__points = self.__points + 1<br>
+            self.__apple.create_new_apple()<br>
+
+    @property<br>
+    def gameover(self) -> bool:<br>
+
+        for i in range(1, self.length, 1):<br>
+
+            if self.__y[0] == self.__y[i] and self.__x[0] == self.__x[i]:<br>
+                return True  # snake ate itself<br>
+
+        if self.__x[0] < 1 or self.__x[0] >= App.BOARD_WIDTH - 1 or self.__y[0] < 1 or self.__y[0] >= App.BOARD_HEIGHT - 1:<br>
+            return True  # snake out of bounds<br>
+
+        return False<br>
+
+    def set_key_event(self, event: Event) -> None: <br>
+
+        if event.char in Snake.KEYS and event.char != Snake.MAP_KEY_OPP[self.__key_last]:<br>
+            self.__key_current = event.char<br>
+
+    @property <br>
+    def x(self) -> List[int]:<br>
+        return self.__x.copy()<br>
+
+    @property<br>
+    def y(self) -> List[int]:<br>
+        return self.__y.copy()<br>
+
+    @property<br>
+    def length(self) -> int:<br>
+        return self.__length<br>
+
+    @property<br>
+    def points(self) -> int:<br>
+        return self.__points<br>
+
+
+class App(Tk):<br>
+
+    BOARD_WIDTH = 60<br>
+    BOARD_HEIGHT = 60<br>
+    TILE_SIZE = 10<br>
+
+    COLOR_BACKGROUND = "brown"<br>
+    COLOR_SNAKE_HEAD = "purple"<br>
+    COLOR_SNAKE_BODY = "pink"<br>
+    COLOR_APPLE = "green"<br>
+    COLOR_FONT = "blue"<br>
+    FONT = "Roboto"<br>
+    FONT_DISTANCE = 15<br>
+
+    TEXT_TITLE = "SnakeCloneGameForLinux"<br>
+    TEXT_GAMEOVER = "YOU DIED!!"<br>
+    TEXT_POINTS = "Apples collected: "<br>
+
+    TICK_RATE = 200  # in ms<br>
+    
+    def __init__(self, screenName=None, baseName=None, className='Tk', useTk=1, sync=0, use=None):<br>
+        Tk.__init__(self, screenName, baseName, className, useTk, sync, use)<br>
+        
+        self.__apple = Apple()<br>
+        self.__snake = Snake(self.__apple)<br>
+
+        self.__canvas = Canvas(self, width=App.BOARD_WIDTH * App.TILE_SIZE, height=App.BOARD_HEIGHT * App.TILE_SIZE)<br>
+        self.__canvas.pack()
+        self.__canvas.configure(background=App.COLOR_BACKGROUND)<br>
+    
+        self.title(App.TEXT_TITLE)<br>
+        self.bind('<KeyPress>', self.__snake.set_key_event)<br>
+
+    def mainloop(self, n=0):<br>
+        self.__gameloop()<br>
+        Tk.mainloop(self, n)<br>
+
+    def __gameloop(self):<br>
+
+        self.after(App.TICK_RATE, self.__gameloop)<br>
+        self.__canvas.delete(ALL)<br>
+
+        if not self.__snake.gameover:<br>
+
+            self.__snake.move()<br>
+
+            x = self.__snake.x<br>
+            y = self.__snake.y<br>
+
+            self.__canvas.create_rectangle(<br>
+                x[0] * App.TILE_SIZE,<br>
+                y[0] * App.TILE_SIZE,<br>
+                x[0] * App.TILE_SIZE + App.TILE_SIZE,<br>
+                y[0] * App.TILE_SIZE + App.TILE_SIZE,<br>
+                fill=App.COLOR_SNAKE_HEAD<br>
+            )  # Head<br>
+
+            for i in range(1, self.__snake.length, 1):<br>
+                self.__canvas.create_rectangle(<br>
+                    x[i] * App.TILE_SIZE,<br>
+                    y[i] * App.TILE_SIZE,<br>
+                    x[i] * App.TILE_SIZE + App.TILE_SIZE,<br>
+                    y[i] * App.TILE_SIZE + App.TILE_SIZE,<br>
+                    fill=App.COLOR_SNAKE_BODY<br>
+                )  # Body<br>
+
+            self.__canvas.create_rectangle(<br>
+                self.__apple.x * App.TILE_SIZE,<br>
+                self.__apple.y * App.TILE_SIZE,<br>
+                self.__apple.x * App.TILE_SIZE + App.TILE_SIZE,<br>
+                self.__apple.y * App.TILE_SIZE + App.TILE_SIZE,<br>
+                fill=App.COLOR_APPLE<br>
+            )  # Apple<br>
+
+        else:  # GameOver Message<br>
+            x = App.BOARD_WIDTH * App.TILE_SIZE / 2  # x coordinate of screen center<br>
+            y = App.BOARD_HEIGHT * App.TILE_SIZE / 2  # y coordinate of screen center<br>
+            self.__canvas.create_text(x, y - App.FONT_DISTANCE, fill=App.COLOR_FONT, font=App.FONT,<br>
+                                      text=App.TEXT_GAMEOVER)<br>
+            self.__canvas.create_text(x, y + App.FONT_DISTANCE, fill=App.COLOR_FONT, font=App.FONT,<br>
+                                      text=App.TEXT_POINTS + str(self.__snake.points))<br>
+    
+
+if __name__ == "__main__":<br>
+    App().mainloop()<br></p>

@@ -1,0 +1,103 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Bowling Average Calculator by Jonathan Steadman!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Bowling Average Calculator by Jonathan Steadman!</u></h1>
+<p>#!/usr/bin/env python3 <br>
+from tkinter import * <br>
+
+class Application(Frame): <br>
+    """Build the basic window frame template""" <br>
+    def __init__(self, master): <br>
+        super(Application, self).__init__(master) <br>
+        self.grid() <br>
+        self.create_widgets() <br>
+        
+    def create_widgets(self): <br>
+        menubar = Menu(self) <br>
+        filemenu = Menu(self) <br>
+        filemenu.add_command(label='Calculate', command=self.calculate) <br>
+        filemenu.add_command(label='Reset', command=self.clear) <br>
+        menubar.add_cascade(label='File', menu=filemenu) <br>
+        menubar.add_command(label='Quit', command=root.quit) <br>
+        self.label1 = Label(self, text='The Bowling Calculator by Jonathan Steadman') <br>
+        self.label1.grid(row=0, columnspan=3) <br>
+        self.label2 = Label(self, text= 'Enter score from game 1:') <br>
+        self.label3 = Label(self, text= 'Enter score from game 2:') <br>
+        self.label4 = Label(self, text= 'Enter score from game 3:') <br>
+        self.label5 = Label(self, text='Average:') <br>
+        self.label2.grid(row=2, column=0) <br>
+        self.label3.grid(row=3, column=0) <br>
+        self.label4.grid(row=4, column=0) <br>
+        self.label5.grid(row=5, column=0) <br>
+        self.score1 = Entry(self) <br>
+        self.score2 = Entry(self) <br>
+        self.score3 = Entry(self) <br>
+        self.average = Entry(self) <br>
+        self.score1.grid(row=2, column=1) <br>
+        self.score2.grid(row=3, column=1) <br>
+        self.score3.grid(row=4, column=1) <br>
+        self.average.grid(row=5, column=1)<br>
+        self.button1 = Button(self, text="Calculate Average", command=self.calculate) <br>
+        self.button1.grid(row=6, column=0) <br>
+        self.button2 = Button(self, text="Clear results", command=self.clear) <br>
+        self.button2.grid(row=6, column=1) <br>
+        self.score1.focus_set() <br>
+        root.config(menu=menubar) <br>
+        
+    def calculate(self): <br>
+        """Calculate and display the average""" <br>
+        numScore1 = int(self.score1.get()) <br>
+        numScore2 = int(self.score2.get()) <br>
+        numScore3 = int(self.score3.get()) <br>
+        total = numScore1 + numScore2 + numScore3 <br>
+        average= total / 3 <br>
+        strAverage = "{0:.2f}".format(average) <br>
+        self.average.insert(0, strAverage) <br>
+    def clear(self): <br>
+        """Clear the Entry forms""" <br>
+        self.score1.delete(0,END) <br>
+        self.score2.delete(0,END) <br>
+        self.score3.delete(0,END) <br>
+        self.average.delete(0,END) <br>
+        self.score1.focus_set() <br>
+        
+root = Tk() <br>
+root.title('Bowling Average Calculator by Jonathan Steadman') <br>
+root.geometry('500x200') <br>
+app = Application(root) <br>
+app.mainloop()</p>
+
+
+
+
+
+
+</body>
+
+</html>

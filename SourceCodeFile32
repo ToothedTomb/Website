@@ -1,0 +1,95 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254"/>
+<title>Paper,Rock,SCISSORSGame!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false">
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Paper,Rock,SCISSORSGame!</u></h1>
+<p></p>
+#!/usr/bin/env python3 <br>
+import random <br>
+import tkinter as tk <br>
+window = tk.Tk() <br>
+window.geometry("400x300") <br>
+window.title("Paper,Rock,SCISSORSGame") <br>
+USER_SCORE = 0 <br>
+COMP_SCORE = 0 <br>
+USER_CHOICE = "" <br>
+COMP_CHOICE = "" <br>
+def choice_to_number(choice): <br>
+    rps = {'rock':0,'paper':1,'scissor':2} <br>
+    return rps[choice] <br>
+def number_to_choice(number): <br>
+    rps={0:'rock',1:'paper',2:'scissor'} <br>
+    return rps[number] <br>
+def random_computer_choice(): <br>
+    return random.choice(['rock','paper','scissor']) <br>
+def result(human_choice,comp_choice): <br>
+    global USER_SCORE <br>
+    global COMP_SCORE <br>
+    user=choice_to_number(human_choice) <br>
+    comp=choice_to_number(comp_choice) <br>
+    if(user==comp): <br>
+        print("We got a tie :)") <br>
+    elif((user-comp)%3==1): <br>
+        print("You win. :)") <br>
+        USER_SCORE+=1 <br>
+    else: <br>
+        print("Computer wins :)") <br>
+        COMP_SCORE+=1 <br>
+    text_area = tk.Text(master=window,height=12,width=30,bg="#FFB6C1") <br>
+    text_area.grid(column=1,row=4) <br>
+    answer = "Your Choice: {uc} \nComputer's Choice : {cc} \n Your Score : {u} \n Computer Score : {c} ".format(uc=USER_CHOICE,cc=COMP_CHOICE,u=USER_SCORE,c=COMP_SCORE) <br>    
+    text_area.insert(tk.END,answer) <br>
+def rock(): <br>
+    global USER_CHOICE <br>
+    global COMP_CHOICE <br>
+    USER_CHOICE='rock' <br>
+    COMP_CHOICE=random_computer_choice() <br>
+    result(USER_CHOICE,COMP_CHOICE) <br>
+def paper(): <br>
+    global USER_CHOICE <br>
+    global COMP_CHOICE <br>
+    USER_CHOICE='paper' <br>
+    COMP_CHOICE=random_computer_choice() <br>
+    result(USER_CHOICE,COMP_CHOICE) <br>
+def scissor(): <br>
+    global USER_CHOICE <br>
+    global COMP_CHOICE <br>
+    USER_CHOICE='scissor' <br>
+    COMP_CHOICE=random_computer_choice() <br> 
+    result(USER_CHOICE,COMP_CHOICE) <br>
+button1 = tk.Button(text="Rock",bg="LightBlue",command=rock) <br>
+button1.grid(column=0,row=1) <br>
+button2 = tk.Button(text="Paper",bg="pink",command=paper) <br>
+button2.grid(column=0,row=2) <br>
+button3 = tk.Button(text="Scissor",bg="green",command=scissor) <br>
+button3.grid(column=0,row=3) <br>
+window.mainloop() <br>
+
+
+</body>
+</html>

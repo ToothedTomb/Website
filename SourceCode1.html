@@ -1,0 +1,100 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Basic Cal GUI CODE!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Basic Cal GUI!</u></h1>
+<p>#!/usr/bin/env python3 <br>
+from tkinter import*<br>
+import tarfile <br>
+import os <br>
+def btnClick(numbers): <br>
+    global operator <br>
+    operator=operator + str(numbers) <br>
+    text_Input.set(operator) <br>
+    
+def btnClearDisplay(): <br>
+    global operator <br>
+    operator="" <br>
+    text_Input.set("") <br>
+cal = Tk() <br>
+cal.title("Jonathan Steadman Calculator") <br>
+operator="" <br>
+text_Input =StringVar() <br>
+
+def btnEqualsInput(): <br>
+    global operator <br>
+    sumup=str(eval(operator)) <br>
+    text_Input.set(sumup) <br>
+    operator="" <br>
+    
+
+txtDisplay = Entry(cal,font=('arial', 20,'bold'), textvariable=text_Input, bd=30, insertwidth=4, <br>
+                   bg="pink", justify='right').grid(columnspan=4) <br>
+
+btn7=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+            text="7", bg="pink",command=lambda:btnClick(7)).grid(row=1,column=0) <br>
+
+btn8=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="8", bg="pink",command=lambda:btnClick(8)).grid(row=1,column=1) <br>
+btn9=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="9", bg="pink",command=lambda:btnClick(9)).grid(row=1,column=2) <br>
+Addition=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="+", bg="pink",command=lambda:btnClick("+")).grid(row=1,column=3) <br>
+#====================================================================== <br>
+btn4=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+            text="4", bg="pink",command=lambda:btnClick(4)).grid(row=2,column=0) <br>
+
+btn5=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="5", bg="pink",command=lambda:btnClick(5)).grid(row=2,column=1) <br>
+btn6=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="6", bg="pink",command=lambda:btnClick(6)).grid(row=2,column=2) <br>
+Subtraction=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="-", bg="pink", command=lambda:btnClick("-")).grid(row=2,column=3) <br>
+#======================================================================<br>
+btn1=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'),<br>
+            text="1", bg="pink",command=lambda:btnClick(1)).grid(row=3,column=0) <br>
+
+btn2=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="2", bg="pink",command=lambda:btnClick(2)).grid(row=3,column=1) <br>
+btn3=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="3", bg="pink",command=lambda:btnClick(3)).grid(row=3,column=2) <br>
+Mutiply=Button(cal,padx=16,pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="*", bg="pink",command=lambda:btnClick("*")).grid(row=3,column=3) <br>
+#====================================================================== <br>
+btn0=Button(cal,padx=16, pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+            text="0", bg="pink",command=lambda:btnClick(0)).grid(row=4,column=0) <br>
+
+btnClear=Button(cal,padx=16, pady=16, bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="C", bg="pink", command= btnClearDisplay).grid(row=4,column=1) <br>
+btnEquals=Button(cal,padx=16, pady=16, bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="=", bg="pink",command=btnEqualsInput).grid(row=4,column=2) <br>
+Division=Button(cal,padx=16, pady=16,bd=8, fg="grey",font=('arial',20,'bold'), <br>
+             text="/", bg="pink",command=lambda:btnClick("/")).grid(row=4,column=3) <br>
+cal.mainloop() <br></p>
+<body>
+</html>

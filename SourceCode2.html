@@ -1,0 +1,294 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>NotePad CODE!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for NotePad!</u></h1>
+<p># Importing Required libraries & Modules <br>
+from tkinter import * <br>
+from tkinter import messagebox <br>
+from tkinter import filedialog <br>
+    
+    # Defining TextEditor Class <br>
+class TextEditor: <br>
+      # Defining Constructor <br>
+      def __init__(self,root): <br>
+        # Assigning root <br>
+        self.root = root <br>
+        # Title of the window <br>
+        self.root.title("Jonathan Steadman Text edditor!") <br>
+        # Window Geometry <br>
+        self.root.geometry("1200x700+200+150") <br>
+        # Initializing filename <br>
+        self.filename = None <br>
+        # Declaring Title variable <br>
+        self.title = StringVar() <br>
+        # Declaring Status variable <br>
+        self.status = StringVar() <br>
+        # Creating Titlebar <br>
+        self.titlebar = Label(self.root,textvariable=self.title,font=("Roboto",15),bd=2,relief=GROOVE) <br>
+        # Packing Titlebar to root window <br>
+        self.titlebar.pack(side=BOTTOM,fill=BOTH) <br>
+        # Calling Settitle Function <br>
+        self.settitle() <br>
+        # Creating Statusbar <br>
+        self.statusbar = Label(self.root,textvariable=self.status,font=("Roboto",15),bd=2,relief=GROOVE) <br>
+        # Packing status bar to root window <br>
+        self.statusbar.pack(side=BOTTOM,fill=BOTH) <br>
+        # Initializing Status <br>
+        self.status.set("Welcome To Text Editor") <br>
+        # Creating Menubar <br>
+        self.menubar = Menu(self.root,font=("Roboto",15),activebackground="pink") <br>
+        # Configuring menubar on root window <br>
+        self.root.config(menu=self.menubar) <br>
+        # Creating File Menu <br>
+        self.filemenu = Menu(self.menubar,font=("Roboto",12),activebackground="purple")<br>
+        # Adding New file Command<br>
+        self.filemenu.add_command(label="New",accelerator="Ctrl+N",command=self.newfile)<br>
+        # Adding Open file Command<br>
+        self.filemenu.add_command(label="Open",accelerator="Ctrl+O",command=self.openfile)<br>
+        # Adding Save File Command<br>
+        self.filemenu.add_command(label="Save",accelerator="Ctrl+S",command=self.savefile)<br>
+        # Adding Save As file Command<br>
+        self.filemenu.add_command(label="Save As",accelerator="Ctrl+A",command=self.saveasfile)<br>
+        # Adding Seprator<br>
+        self.filemenu.add_separator()<br>
+        # Adding Exit window Command<br>
+        self.filemenu.add_command(label="Exit",accelerator="Ctrl+E",command=self.exit)<br>
+        # Cascading filemenu to menubar<br>
+        self.menubar.add_cascade(label="File", menu=self.filemenu)<br>
+        # Creating Edit Menu<br>
+        self.editmenu = Menu(self.menubar,font=("Roboto",12),activebackground="yellow")<br>
+        # Adding Cut text Command<br>
+        self.editmenu.add_command(label="Cut",accelerator="Ctrl+X",command=self.cut)<br>
+        # Adding Copy text Command <br>
+        self.editmenu.add_command(label="Copy",accelerator="Ctrl+C",command=self.copy)<br>
+        # Adding Paste text command<br>
+        self.editmenu.add_command(label="Paste",accelerator="Ctrl+V",command=self.paste)<br>
+        # Adding underline text<br>
+        # Adding Seprator<br>
+        self.editmenu.add_separator()<br>
+        # Adding Undo text Command<br>
+        self.editmenu.add_command(label="Undo",accelerator="Ctrl+U",command=self.undo)<br>
+        # Cascading editmenu to menubar<br>
+        self.menubar.add_cascade(label="Edit", menu=self.editmenu)<br>
+        # Creating Help Menu<br>
+        self.helpmenu = Menu(self.menubar,font=("Roboto",12,),activebackground="green")<br>
+        #creating whats new menu<br>
+        self.whatsnew = Menu(self.menubar, font=("Roboto",12),activebackground="grey")<br>
+        # Adding About Command<br>
+        self.helpmenu.add_command(label="About",command=self.infoabout)<br>
+
+        # Cascading helpmenu to menubar<br>
+        self.menubar.add_cascade(label="Help", menu=self.helpmenu)<br>
+        self.menubar.add_cascade(label="What new", menu=self.whatsnew)<br>
+        
+        # Creating Scrollbar<br>
+        scrol_y = Scrollbar(self.root,orient=VERTICAL)<br>
+        scrol_x = Scrollbar(self.root,orient=HORIZONTAL)<br>
+        # Creating Text Area<br>
+        self.txtarea = Text(self.root,yscrollcommand=scrol_y.set,font=("Roboto",34),state="normal",relief=GROOVE)<br>
+        # Packing scrollbar to root window<br>
+        scrol_y.pack(side=RIGHT,fill=Y)<br>
+        scrol_x.pack(side=TOP,fill=X)<br>
+        # Adding Scrollbar to text area<br>
+        scrol_y.config(command=self.txtarea.yview)<br>
+        # Packing Text Area to root window<br>
+        self.txtarea.pack(fill=BOTH,expand=1)<br>
+        # Calling shortcuts funtion<br>
+        self.shortcuts()<br>
+        messagebox.showinfo("Hey","I welcome you to Jonathan Steadman Text editor!")<br>
+      # Defining settitle function<br>
+      def settitle(self):<br>
+        # Checking if Filename is not None<br>
+        if self.filename:<br>
+          # Updating Title as filename<br>
+          self.title.set(self.filename)<br>
+        else:<br>
+          # Updating Title as Untitled<br>
+          self.title.set("Give me a name please!")<br>
+      # Defining New file Function<br>
+      def newfile(self,*args):<br>
+        # Clearing the Text Area<br>
+        self.txtarea.delete("1.0",END)<br>
+        # Updating filename as None<br>
+        self.filename = None<br>
+        # Calling settitle funtion<br>
+        self.settitle()<br>
+        # updating status
+        self.status.set("New File Created")<br>
+      # Defining Open File Funtion<br>
+      def openfile(self,*args):<br>
+        # Exception handling<br>
+        try:<br>
+          # Asking for file to open<br>
+          self.filename = filedialog.askopenfilename(title = "Select file",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py"))) <br>
+          # checking if filename not none<br>
+          if self.filename:<br>
+            # opening file in readmode<br>
+            infile = open(self.filename,"r")<br>
+            # Clearing text area<br>
+            self.txtarea.delete("1.0",END)<br>
+            # Inserting data Line by line into text area<br>
+            for line in infile:<br>
+              self.txtarea.insert(END,line)<br>
+            # Closing the file  <br>
+            infile.close()<br>
+            # Calling Set title<br>
+            self.settitle()<br>
+            # Updating Status
+            self.status.set("Opened Successfully")<br>
+            messagebox.showinfo("Hey", "Opened Successfully! :)")<br>
+        except Exception as e:<br>
+          messagebox.showerror("Error code 1: Exception",e)<br>
+      # Defining Save File Funtion<br>
+      def savefile(self,*args):<br>
+        # Exception handling<br>
+        try:<br>
+          # checking if filename not none<br>
+          if self.filename:<br>
+            # Reading the data from text area<br>
+            data = self.txtarea.get("1.0",END)<br>
+            # opening File in write mode<br>
+            outfile = open(self.filename,"w")<br>
+            # Writing Data into file<br>
+            outfile.write(data)<br>
+            # Closing File<br>
+            outfile.close()<br>
+            # Calling Set title<br>
+            self.settitle()<br>
+            # Updating Status<br>
+            self.status.set("Saved Successfully :)")<br>
+            messagebox.showinfo("Hey","Saved Susscessfully! :)")<br>
+          else:<br>
+            self.saveasfile()<br>
+        except Exception as e:<br>
+          messagebox.showerror("Error code 2: Exception :(",e)<br>
+      # Defining Save As File Funtion<br>
+      def saveasfile(self,*args):<br>
+        # Exception handling<br>
+        try:<br>
+          # Asking for file name and type to save<br>
+          untitledfile = filedialog.asksaveasfilename(title = "Save file As",defaultextension=".txt",initialfile = "Untitled.txt",filetypes = (("All Files","*.*"),("Text Files","*.txt"),("Python Files","*.py"))) <br>
+          # Reading the data from text area <br>
+          data = self.txtarea.get("1.0",END)<br>
+          # opening File in write mode<br>
+          outfile = open(untitledfile,"w")<br>
+          # Writing Data into file<br>
+          outfile.write(data)<br>
+          # Closing File<br>
+          outfile.close()<br>
+          # Updating filename as Untitled <br>
+          self.filename = untitledfile<br>
+          # Calling Set title<br>
+          self.settitle()<br>
+          # Updating Status<br>
+          self.status.set("Saved Successfully :)")<br>
+          messagebox.showinfo("Hey","Saved Successfully :)") <br>
+        except Exception as e:<br>
+          messagebox.showerror("Error code 3: Exception :(",e)<br>
+      # Defining Exit Funtion <br>
+      def exit(self,*args):<br>
+        op = messagebox.askyesno("Hey","You data will be lost so save now (if you have not done allready)") <br>
+        if op>0:<br>
+          self.root.destroy() <br>
+        else:<br>
+          return<br>
+      # Defining Cut Funtion<br>
+      def cut(self,*args):<br>
+        self.txtarea.event_generate("<<Cut>>") <br>
+      # Defining Copy Funtion<br>
+      def copy(self,*args):<br>
+        self.txtarea.event_generate("<<Copy>>") <br>
+      # Defining Paste Funtion<br>
+      def paste(self,*args):<br>
+        self.txtarea.event_generate("<<Paste>>") <br>
+      # Defining Undo Funtion<br>
+      def undo(self,*args):<br>
+        # Exception handling<br>
+        try:<br>
+          # checking if filename not none <br>
+          if self.filename:<br>
+            # Clearing Text Area<br>
+            self.txtarea.delete("1.0",END)<br>
+            # opening File in read mode<br>
+            infile = open(self.filename,"r")<br>
+            # Inserting data Line by line into text area<br>
+            for line in infile:<br>
+              self.txtarea.insert(END,line)<br>
+            # Closing File<br>
+            infile.close()<br>
+            # Calling Set title<br>
+            self.settitle()<br>
+            # Updating Status<br>
+            self.status.set("Undone Successfully :)")<br>
+          else:<br>
+            # Clearing Text Area<br>
+            self.txtarea.delete("1.0",END) <br>
+            # Updating filename as None<br>
+            self.filename = None<br>
+            # Calling Set title<br>
+            self.settitle()<br>
+            # Updating Status<br>
+            self.status.set("Undone Successfully :)")<br>
+        except Exception as e:<br>
+          messagebox.showerror("Error code 4: Exception :(",e) <br>
+      # Defining About Funtion<br>
+      def infoabout(self):<br>
+        messagebox.showinfo("About Jonathan Steadman Text edditor","A Simple Text Editor that was made with python! :)")<br>
+      # Defining shortcuts Funtion<br>
+      def shortcuts(self):<br>
+        # Binding Ctrl+n to newfile funtion <br>
+        self.txtarea.bind("<Control-n>",self.newfile) <br>
+        # Binding Ctrl+o to openfile funtion<br>
+        self.txtarea.bind("<Control-o>",self.openfile)<br>
+        # Binding Ctrl+s to savefile funtion<br>
+        self.txtarea.bind("<Control-s>",self.savefile)<br>
+        # Binding Ctrl+a to saveasfile funtion<br>
+        self.txtarea.bind("<Control-a>",self.saveasfile)<br>
+        # Binding Ctrl+e to exit funtion<br>
+        self.txtarea.bind("<Control-e>",self.exit)<br>
+        # Binding Ctrl+x to cut funtion<br>
+        self.txtarea.bind("<Control-x>",self.cut)<br>
+        # Binding Ctrl+c to copy funtion<br>
+        self.txtarea.bind("<Control-c>",self.copy)<br>
+        # Binding Ctrl+v to paste funtion<br>
+        self.txtarea.bind("<Control-v>",self.paste)<br>
+        # Binding Ctrl+u to undo funtion<br>
+        self.txtarea.bind("<Control-u>",self.undo)<br>
+      def selfwhatsnew (self):<br>
+          self.status.set("Hey","I have added new pop-ups such as successfully opened, updated the font and I have added whats new on the menu! Anyway that it have fun typing!") <br>
+          messagebox.showinfo("Hey","I have added new pop-ups such as successfully opened, updated the font and I have added whats new on the menu! Anyway that it have fun typing!") <br>
+    # Creating TK Container <br>
+root = Tk() <br>
+# Passing Root to TextEditor Class <br>
+TextEditor(root)<br>
+# Root Window Looping<br>
+root.mainloop()<br> </p>
+
+</body>
+</html>

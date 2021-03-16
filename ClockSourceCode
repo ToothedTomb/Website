@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4p26EaBH5-SJr_IZitbS-fbA3DPfG3EETlHS3LFQfSism8OMKEGhhJbLauQc0wJvYwa5c0pIZe7bgsHJX6DD55WWjm-LPsvYAW3vboHWIHb7X5JYfJ-FSRKltKdWOqmw1pxAMO53chfHsaQ9h5ieUOSSxXw4gJACjJ5rJslkx44SqVouEur1PQCys7sMA-UxIuT-N9F9Gpo1ePRfCQMoOnSCHhm4c9mM_F2HZbt_0LiDE/54354.jpg?psid=1&width=640&height=480">
+<title>Clock by Jonathan Steadman!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Clock by Jonathan Steadman!</u></h1>
+<p>from tkinter import * <br>
+from tkinter.ttk import * <br>
+
+from time import strftime <br>
+root = Tk() <br>
+root.resizable(width=False, height=False) <br>
+root.title('Clock by Jonathan Steadman') <br>
+def time():  <br>
+    string = strftime('%H:%M:%S %p') <br> 
+    lbl.config(text = string)  <br>
+    lbl.after(1000, time)  <br>
+  
+# Styling the label widget so that clock <br> 
+# will look more attractive  <br>
+lbl = Label(root, font = ('Roboto', 60), <br> 
+            background = 'black', <br>
+            foreground = 'blue')  <br>
+  
+# Placing clock at the centre <br> 
+# of the tkinter window  <br>
+lbl.pack(anchor = 'center')  <br>
+time()  <br>
+  
+mainloop() <br> </p>
+</body>
+
+</html>

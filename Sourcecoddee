@@ -1,0 +1,132 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>ScreenREC!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for ScreenREC!</u></h1>
+<p>import sys <br>
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton <br>
+from PyQt5.QtCore import pyqtSlot <br>
+from pyautogui import screenshot <br>
+import cv2 <br>
+import glob <br>
+from threading import Thread <br>
+import shutil <br>
+import os <br>
+import time <br>
+
+class App(QWidget, Thread): <br>
+    """Inherit the class Thread""" <br>
+    def __init__(self): <br>
+        """Initialize init""" <br>
+        super().__init__() <br>
+        self.title = 'ScreenREC' <br>
+        self.left = 30 <br>
+        self.top = 30 <br>
+        self.width = 500 <br>
+        self.height = 100 <br>
+        self.count = 0 <br>
+        self.status = True <br>
+        Thread.__init__(self) <br>
+        self.daemon = Thread(target=self.start_recording, name="start_ScreenREC") <br>
+        self.daemon.setDaemon(True) <br>
+        self.initUI() <br>
+
+    def initUI(self): <br>
+        """Initialize UI""" <br>
+        self.setWindowTitle(self.title) <br>
+        self.setGeometry(self.left, self.top, self.width, self.height) <br>
+        button = QPushButton('Start Desktop Recorder', self) <br>
+        button.setToolTip('Click here to start screen recording') <br>
+        button.move(20, 10) <br>
+        button.clicked.connect(self.start_threading) <br>
+        button = QPushButton('Screenshot', self) <br>
+        button.setToolTip('Click here to take screenshot') <br>
+        button.move(200, 10) <br>
+        button.clicked.connect(self.take_screenshot) <br>
+        button = QPushButton('Stop Desktop Recording', self) <br>
+        button.setToolTip('Click here to stop recording') <br>
+        button.move(310, 10) <br>
+        button.clicked.connect(self.stop_recording) <br>
+        self.show() <br>
+
+    def start_recording(self): <br>
+        """Start Recording, take screenshot and store in directory""" <br>
+        while self.status: <br>
+            self.count += 1 <br>
+            print("Inside start recording", self.count) <br>
+            if not os.path.isdir("screenshots"): <br>
+                os.mkdir("screenshots") <br>
+            else: <br>
+                filename = "screenshots/" + str(self.count) + ".jpg" <br>
+                screenshot(filename) <br>
+
+    @pyqtSlot() <br>
+    def start_threading(self): <br>
+        """Start threading and daemon""" <br>
+        print("Inside start threading") <br>
+        self.daemon.start() <br>
+
+    @pyqtSlot() <br>
+    def stop_recording(self): <br>
+        """Stop Recording and create video.""" <br>
+        print('Stop Button has been pressed') <br>
+        try: <br>
+            img_array = [] <br>
+            self.status = False <br>
+            for filename in glob.glob('screenshots/*.png'): <br>
+                img = cv2.imread(filename) <br>
+                height, width, layers = img.shape <br>
+                size = (width, height) <br>
+                img_array.append(img) <br>
+            out = cv2.VideoWriter('project.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 24, size) <br>
+            for i in range(len(img_array)): <br>
+                out.write(img_array[i]) <br>
+            out.release() <br>
+            shutil.rmtree('screenshots') <br>
+            exit() <br>
+        except: <br>
+            exit() <br>
+
+    def take_screenshot(self): <br>
+        """Take screen shot and store to a directory""" <br>
+        if not os.path.isdir("screenshot"): <br>
+            os.mkdir("screenshot") <br>
+        filename = "screenshot/" + str(time.time()) + ".png" <br>
+        screenshot(filename) <br>
+        img = cv2.imread(filename) <br>
+        cv2.imshow("Screenshot", img) <br>
+        cv2.waitKey(0) <br>
+
+if __name__ == '__main__': <br>
+    app = QApplication(sys.argv) <br>
+    ex = App() <br>
+    sys.exit(app.exec_()) <br></p>
+
+</body>
+
+</html>

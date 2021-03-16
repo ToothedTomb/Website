@@ -1,0 +1,57 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Temperature Converter!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Temperature Converter!</u></h1>
+<p>#!/usr/bin/env python3 <br>
+import tkinter as tk <br>
+window = tk.Tk() <br>
+window.title("Temperature Converter by Jonathan Steadman") <br>
+frm_entry = tk.Frame(master=window) <br>
+ent_temperature = tk.Entry(master=frm_entry, width=10) <br>
+lbl_temp = tk.Label(master =frm_entry, text="\N{DEGREE FAHRENHEIT}") <br>
+ent_temperature.grid(row=0, column=0, sticky="e") <br>
+lbl_temp.grid(row=0, column=1, sticky="w") <br>
+def fahrenheit_to_celsius(): <br>
+    fahrenheit = ent_temperature.get() <br>
+    celsius = (5/9) * (float(fahrenheit) - 32) <br>
+    lbl_result["text"] = f"{round(celsius, 2)} \N{DEGREE CELSIUS}" <br>
+
+btn_convert = tk.Button( <br>
+    master=window, <br>
+    text="\N{RIGHTWARDS BLACK ARROW}", <br>
+    command=fahrenheit_to_celsius <br>
+)
+lbl_result = tk.Label(master=window, text="\N{DEGREE CELSIUS}") <br>
+frm_entry.grid(row=0, column=0, padx=10) <br>
+btn_convert.grid(row=0, column=1, padx=10) <br>
+lbl_result.grid(row=0, column=2, padx=10) <br>
+window.mainloop() <br>
+</p>
+</body>
+</html>

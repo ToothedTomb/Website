@@ -1,0 +1,199 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Jonathan Steadman First car game!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Jonathan Steadman First car game!</u></h1>
+<h2>Main.py</h2>
+<p>#!/usr/bin/env python3 <br>
+import pygame, random <br>
+from car import Car <br>
+pygame.init() <br>
+
+GREEN = (20, 255, 140) <br>
+GREY = (210, 210 ,210) <br>
+WHITE = (255, 255, 255) <br>
+RED = (255, 0, 0) <br>
+PURPLE = (255, 0, 255) <br>
+YELLOW = (255, 255, 0) <br>
+CYAN = (0, 255, 255) <br>
+BLUE = (100, 100, 255) <br>
+
+speed = 1.5 <br>
+colorList = (RED, GREEN, PURPLE, YELLOW, CYAN, BLUE) <br>
+SCREENWIDTH = 450 <br>
+SCREENHEIGHT = 700 <br>
+size = (SCREENWIDTH, SCREENHEIGHT) <br>
+screen = pygame.display.set_mode(size) <br>
+pygame.display.set_caption("Jonathan Steadman First car game!") <br>
+all_sprites_list = pygame.sprite.Group() <br>
+playerCar = Car(RED, 60, 80, 70) <br>
+playerCar.rect.x = 160 <br>
+playerCar.rect.y = SCREENHEIGHT - 100 <br>
+ 
+car1 = Car(RED, 60, 80, random.randint(50,100)) <br>
+car1.rect.x = 60 <br>
+car1.rect.y = -100 <br>
+ 
+car2 = Car(RED, 60, 80, random.randint(50,100)) <br>
+car2.rect.x = 160 <br>
+car2.rect.y = -600 <br>
+ 
+car3 = Car(RED, 60, 80, random.randint(50,100)) <br>
+car3.rect.x = 260 <br>
+car3.rect.y = -300 <br>
+ 
+car4 = Car(RED, 60, 80, random.randint(50,100)) <br>
+car4.rect.x = 360 <br>
+car4.rect.y = -900 <br>
+
+all_sprites_list.add(playerCar) <br>
+all_sprites_list.add(car1) <br>
+all_sprites_list.add(car2) <br>
+all_sprites_list.add(car3) <br>
+all_sprites_list.add(car4) <br>
+ 
+all_coming_cars = pygame.sprite.Group() <br>
+all_coming_cars.add(car1) <br>
+all_coming_cars.add(car2) <br>
+all_coming_cars.add(car3) <br>
+all_coming_cars.add(car4) <br>
+
+carryOn = True <br>
+clock=pygame.time.Clock() <br>
+ 
+while carryOn: <br>
+        for event in pygame.event.get(): <br>
+            if event.type==pygame.QUIT: <br>
+                carryOn=False <br>
+            elif event.type==pygame.KEYDOWN: <br>
+                if event.key==pygame.K_x: <br>
+                     playerCar.moveRight(10) <br>
+ 
+        keys = pygame.key.get_pressed() <br>
+        if keys[pygame.K_LEFT]: <br>
+            playerCar.moveLeft(5) <br>
+        if keys[pygame.K_RIGHT]: <br>
+            playerCar.moveRight(5) <br>
+        if keys[pygame.K_UP]: <br>
+            speed += 0.05 <br>
+        if keys[pygame.K_DOWN]: <br>
+            speed -= 0.05 <br>
+ 
+ 
+        #Game Logic <br>
+        for car in all_coming_cars: <br>
+            car.moveForward(speed) <br>
+            if car.rect.y > SCREENHEIGHT: <br>
+                car.changeSpeed(random.randint(50,100)) <br>
+                car.repaint(random.choice(colorList)) <br>
+                car.rect.y = -200 <br>
+ 
+        all_sprites_list.update() <br>
+ 
+        #Drawing on Screen <br>
+        screen.fill(BLUE) <br>
+        #Draw The Road <br>
+        pygame.draw.rect(screen, GREY, [40,0, 400,SCREENHEIGHT]) <br>
+        #Draw Line painting on the road <br>
+        pygame.draw.line(screen, WHITE, [140,0],[140,SCREENHEIGHT],5) <br>
+        #Draw Line painting on the road <br>
+        pygame.draw.line(screen, WHITE, [240,0],[240,SCREENHEIGHT],5) <br>
+        #Draw Line painting on the road <br>
+        pygame.draw.line(screen, WHITE, [340,0],[340,SCREENHEIGHT],5) <br>
+	
+#Check if there is a car collision <br>
+        car_collision_list = pygame.sprite.spritecollide(playerCar,all_coming_cars,False) <br>
+        for car in car_collision_list: <br>
+            print("Sorry you died! :(") <br>
+            #End Of Game <br>
+            carryOn=False <br>
+ 
+ 
+        #Now let's draw all the sprites in one go. (For now we only have 1 sprite!) <br>
+        all_sprites_list.draw(screen) <br>
+ 
+        #Refresh Screen <br>
+        pygame.display.flip() <br>
+ 
+        #Number of frames per secong e.g. 60 <br>
+        clock.tick(60) <br>
+ 
+pygame.quit() <br>
+
+<h2>car.py</h2>
+<p>import pygame <br>
+WHITE = (255, 255, 255) <br>
+ 
+class Car(pygame.sprite.Sprite): <br>
+    #This class represents a car. It derives from the "Sprite" class in Pygame. <br>
+ 
+    def __init__(self, color, width, height, speed): <br>
+        # Call the parent class (Sprite) constructor <br>
+        super().__init__() <br>
+ 
+        # Pass in the color of the car, and its x and y position, width and height. <br>
+        # Set the background color and set it to be transparent <br>
+        self.image = pygame.Surface([width, height]) <br>
+        self.image.fill(WHITE) <br>
+        self.image.set_colorkey(WHITE) <br>
+ 
+        #Initialise attributes of the car. <br>
+        self.width=width <br>
+        self.height=height <br>
+        self.color = color <br>
+        self.speed = speed <br>
+ 
+        # Draw the car (a rectangle!) <br>
+        pygame.draw.rect(self.image, self.color, [0, 0, self.width, self.height]) <br>
+ 
+        # Instead we could load a proper picture of a car... <br>
+        # self.image = pygame.image.load("car.png").convert_alpha() <br>
+ 
+        # Fetch the rectangle object that has the dimensions of the image. <br>
+        self.rect = self.image.get_rect() <br>
+ 
+    def moveRight(self, pixels): <br>
+        self.rect.x += pixels <br>
+ 
+    def moveLeft(self, pixels): <br>
+        self.rect.x -= pixels <br>
+ 
+    def moveForward(self, speed): <br>
+        self.rect.y += self.speed * speed / 20 <br>
+ 
+    def moveBackward(self, speed): <br>
+        self.rect.y -= self.speed * speed / 20 <br>
+ 
+    def changeSpeed(self, speed): <br>
+        self.speed = speed <br>
+ 
+    def repaint(self, color): <br>
+        self.color = color <br>
+        pygame.draw.rect(self.image, self.color, [0, 0, self.width, self.height])<br></p>
+
+</p>

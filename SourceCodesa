@@ -1,0 +1,76 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>PhotoCAM!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for PhotoCAM!</u></h1>
+<p>import cv2 <br>
+
+key = cv2. waitKey(1) <br>
+webcam = cv2.VideoCapture(0) <br>
+while True: <br>
+    try: <br>
+        check, frame = webcam.read() <br>
+        print(check) #prints true as long as the webcam is running <br>
+        print(frame) #prints matrix values of each framecd <br>
+        cv2.imshow("Press w when ready mate! By Jonathan Steadman", frame) <br>
+        key = cv2.waitKey(1) <br>
+        if key == ord('w'):  <br>
+            cv2.imwrite(filename='saved_img.jpg', img=frame) <br>
+            webcam.release() <br>
+            img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE) <br>
+            img_new = cv2.imshow("Captured Image", img_new) <br>
+            cv2.waitKey(1650) <br>
+            cv2.destroyAllWindows() <br>
+            print("Processing image...") <br>
+            img_ = cv2.imread('saved_img.jpg', cv2.IMREAD_ANYCOLOR) <br>
+            gray = cv2.cvtColor(img_, cv2.COLOR_BGR2GRAY) <br>
+            print("Converted RGB image to grayscale...") <br>
+            print("Resizing image to 32x32 scale...") <br>
+            img_ = cv2.resize(gray,(32,32)) <br>
+            print("Resized...") <br>
+            img_resized = cv2.imwrite(filename='saved_img-final.jpg', img=img_) <br>
+            print("Image saved! YAY!") <br>
+        
+            break <br>
+        elif key == ord('q'): <br>
+            print("Turning off camera.") <br>
+            webcam.release() <br>
+            print("Camera off.") <br>
+            print("Program ended.") <br>
+            cv2.destroyAllWindows() <br>
+            break <br>
+        
+    except(KeyboardInterrupt): <br>
+        print("Turning off camera.") <br>
+        webcam.release() <br>
+        print("Camera off.") <br>
+        print("Program ended.") <br>
+        cv2.destroyAllWindows() <br>
+        break <br></p>
+        </body>
+        </html>

@@ -1,0 +1,120 @@
+<html>
+<head>
+<link rel="icon" href="https://db3pap001files.storage.live.com/y4pfwtUMdyBFo7804noepw9dT6o3bd9POKe2fChDjqRsQLvX_S9Scj1VCrkox15Meae_66piom57aVQ2JiAyGnvWxNAhb6huMW6zSVHE9f4OYjMldbxZiLtauHXtHuXGM6mweGYsaaqZHuirEkZBfw6hBKgd2YzppElVi3igznTyFNefVTxtWsSea24i-t6-rMnpdcTlO1cpsiucVnKfT15SPuQRJyv7zVO0fJgEFRjQxg/Screenshot%20from%202020-08-20%2017-35-14.png?psid=1&width=351&height=254">
+<title>Paint for Linux!</title>
+<style>
+    ::selection {
+        color: none;
+        background: none;
+    }
+    /* For Mozilla Firefox */
+    ::-moz-selection {
+        color: none;
+        background: none;
+    }
+</style>
+</head>
+
+<body oncopy="return false" onpaste="return false" oncut="return false"...>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '0660143608deafd3aebb7ae2943b07882e309078';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<h1><u>Sorce code file for Paint for Linux!</u></h1>
+<p>from tkinter import * <br>
+from tkinter.colorchooser import askcolor <br>
+from tkinter import messagebox <br>
+
+ 
+class Paint(object): <br>
+
+    DEFAULT_PEN_SIZE = 20 <br>
+    DEFAULT_COLOR = 'pink' <br>
+    
+ 
+    
+
+    def __init__(self): <br>
+        self.root = Tk() <br>
+        self.root.title("Paint for Linux by Jonathan Steadman") <br>
+        self.root.resizable(0,0) <br>
+        self.brush_button = Button(self.root, text='Use the brush', bg='pink', command=self.use_brush) <br>
+        self.brush_button.grid(row=0, column=1) <br>
+        self.pen_button = Button(self.root, text='Use the pen', bg='green', command=self.use_pen) <br>
+        self.pen_button.grid(row=0, column=0) <br>
+
+        self.color_button = Button(self.root, text='Change the color',bg='yellow', command=self.choose_color) <br>
+        self.color_button.grid(row=0, column=2) <br>
+
+        self.eraser_button = Button(self.root, text='Use the rubber.',bg='blue', command=self.use_eraser) <br>
+        self.eraser_button.grid(row=0, column=3) <br>
+
+        self.choose_size_button = Scale(self.root, from_=1, to=100, orient=VERTICAL, bg='orange') <br>
+        self.choose_size_button.grid(row=0, column=4) <br>
+
+        self.c = Canvas(self.root, bg='white', width=1042, height=1042) <br>
+        self.c.grid(row=6, columnspan=5)  <br>
+        messagebox.showwarning("Warning:","In this version of Paint for Linux! You are unable to save you work whitch will come out in the future but for now take a screenshot of you work and have fun! :)") <br>
+
+
+        self.setup() <br>
+        self.root.mainloop() <br>
+    
+
+
+    def setup(self): <br>
+        self.old_x = 6 <br>
+        self.old_y = 7 <br>
+        self.line_width = self.choose_size_button.get() <br>
+        self.color = self.DEFAULT_COLOR <br>
+        self.eraser_on = False <br>
+        self.active_button = self.pen_button <br>
+        self.c.bind('<B1-Motion>', self.paint) <br>
+        self.c.bind('<ButtonRelease-1>', self.reset) <br>
+
+    def use_pen(self): <br>
+        self.activate_button(self.pen_button) <br>
+
+    def use_brush(self): <br>
+        self.activate_button(self.brush_button) <br>
+ 
+    def choose_color(self): <br>
+        self.eraser_on = False <br>
+        self.color = askcolor(color=self.color)[1] <br>
+
+    def use_eraser(self): <br>
+        self.activate_button(self.eraser_button, eraser_mode=True) <br>
+
+    def activate_button(self, some_button, eraser_mode=False): <br>
+        self.active_button.config(relief=RAISED) <br>
+        some_button.config(relief=SUNKEN) <br>
+        self.active_button = some_button <br>
+        self.eraser_on = eraser_mode <br>
+
+    def paint(self, event): <br>
+        self.line_width = self.choose_size_button.get() <br>
+        paint_color = 'white' if self.eraser_on else self.color <br>
+        if self.old_x and self.old_y: <br>
+            self.c.create_line(self.old_x, self.old_y, event.x, event.y,
+                               width=self.line_width, fill=paint_color,
+                               capstyle=ROUND, smooth=TRUE, splinesteps=36) <br>
+        self.old_x = event.x <br>
+        self.old_y = event.y <br>
+
+    def reset(self, event): <br>
+        self.old_x, self.old_y = None, None <br>
+
+if __name__ == '__main__': <br>
+    Paint() <br>
+    </p> 
+    </body>
+    
+    </html>
+    
